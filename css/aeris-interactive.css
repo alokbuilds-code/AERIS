@@ -1,0 +1,1069 @@
+/* ===================================================================
+   AERIS — INTERACTIVE ART SUITE STYLING
+   Tactile 3D Postcard, Luxury Travel Dossier, Photographic Vibe Matcher
+   =================================================================== */
+
+/* ===================================================================
+   08 — FULLSCREEN EDITORIAL LIGHTBOX
+   =================================================================== */
+
+.aeris-lightbox-container {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  background: rgba(3, 4, 7, 0.96);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 4rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s var(--ease-cinematic), visibility 0.5s ease;
+}
+
+.aeris-lightbox-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-cinema-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.lightbox-meta-cluster {
+  display: flex;
+  align-items: baseline;
+  gap: 2.5rem;
+}
+
+.lightbox-cinema-counter {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  color: var(--aeris-gold);
+}
+
+.lightbox-cinema-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  letter-spacing: 0.16em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.lightbox-dismiss-btn {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-dim);
+  transition: color 0.3s ease;
+}
+
+.lightbox-dismiss-btn:hover {
+  color: var(--aeris-gold);
+}
+
+.lightbox-cinema-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+}
+
+.lightbox-cinema-img {
+  max-width: 88vw;
+  max-height: 75vh;
+  object-fit: contain;
+  transition: opacity 0.35s ease, transform 0.45s var(--ease-cinematic);
+  border-radius: 2px;
+  box-shadow: 0 45px 90px rgba(0, 0, 0, 0.95);
+}
+
+.lightbox-arrow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--aeris-ivory-dim);
+  transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 5;
+}
+
+.lightbox-arrow-nav:hover {
+  color: var(--aeris-gold);
+  transform: translateY(-50%) scale(1.15);
+}
+
+.lightbox-prev-nav { left: 1rem; }
+.lightbox-next-nav { right: 1rem; }
+
+.lightbox-cinema-bottombar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--aeris-ivory-subtle);
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+/* ===================================================================
+   09 & 12 — LISTEN TO THE PLACE (SOUNDSCAPE ART LAYER)
+   =================================================================== */
+
+.aeris-sound-section {
+  position: relative;
+  padding: 8rem 4rem;
+  background: var(--aeris-bg-surface);
+  border-bottom: 1px solid var(--aeris-border);
+  overflow: hidden;
+  transition: background 1s ease, border-color 1s ease;
+}
+
+/* Atmospheric Reaction to Audio States */
+body[data-soundscape="ocean"] .aeris-sound-section {
+  background: radial-gradient(circle at center, #05141e 0%, var(--aeris-bg-surface) 85%);
+}
+body[data-soundscape="rain"] .aeris-sound-section {
+  background: radial-gradient(circle at center, #051a14 0%, var(--aeris-bg-surface) 85%);
+}
+body[data-soundscape="wind"] .aeris-sound-section {
+  background: radial-gradient(circle at center, #0d1722 0%, var(--aeris-bg-surface) 85%);
+}
+body[data-soundscape="zen"] .aeris-sound-section {
+  background: radial-gradient(circle at center, #1b1509 0%, var(--aeris-bg-surface) 85%);
+}
+
+.sound-editorial-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sound-section-pre {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--aeris-gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.sound-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.sound-section-sub {
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  color: var(--aeris-ivory-dim);
+  font-weight: 300;
+  max-width: 640px;
+  margin: 0 auto 3.5rem auto;
+  line-height: 1.8;
+}
+
+.sound-tracks-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.aeris-track-btn {
+  padding: 0.95rem 2.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aeris-border);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory);
+  transition: all 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.aeris-track-btn:hover {
+  border-color: var(--aeris-gold);
+  color: var(--aeris-gold);
+  transform: translateY(-2px);
+}
+
+.aeris-track-btn.active {
+  background: var(--aeris-gold);
+  color: var(--aeris-bg-deep);
+  border-color: var(--aeris-gold);
+  box-shadow: 0 0 30px var(--aeris-gold-glow);
+}
+
+.sound-live-deck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.1rem 1.8rem;
+  background: rgba(5, 7, 11, 0.7);
+  border: 1px solid var(--aeris-border);
+  border-radius: 999px;
+}
+
+#sound-waveform-canvas {
+  width: 140px;
+  height: 26px;
+  display: block;
+}
+
+.sound-vol-control {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-dim);
+}
+
+.sound-vol-control input[type="range"] {
+  width: 90px;
+  height: 2px;
+  accent-color: var(--aeris-gold);
+  cursor: pointer;
+}
+
+/* ===================================================================
+   10 & 14 — POSTCARD STUDIO (PHYSICAL OBJECT FEEL)
+   =================================================================== */
+
+.aeris-postcard-section {
+  position: relative;
+  padding: 8rem 4rem;
+  background: var(--aeris-bg-deep);
+  border-bottom: 1px solid var(--aeris-border);
+  transition: var(--theme-transition);
+}
+
+.postcard-editorial-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 4.5rem auto;
+}
+
+.postcard-container-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 5rem;
+  max-width: 1340px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* Editor Controls Column */
+.postcard-controls-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.studio-input-block label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--aeris-gold);
+  margin-bottom: 0.5rem;
+}
+
+.studio-input-block select,
+.studio-input-block input,
+.studio-input-block textarea {
+  width: 100%;
+  padding: 0.8rem 1.1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aeris-border);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--aeris-ivory);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.studio-input-block select:focus,
+.studio-input-block input:focus,
+.studio-input-block textarea:focus {
+  border-color: var(--aeris-gold);
+}
+
+.stamps-choice-row {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.stamp-option-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--aeris-border);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 2px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.stamp-option-btn:hover {
+  border-color: var(--aeris-gold);
+  transform: translateY(-2px);
+}
+
+.stamp-option-btn.active {
+  border-color: var(--aeris-gold);
+  background: rgba(197, 160, 89, 0.15);
+  box-shadow: 0 0 20px var(--aeris-gold-glow);
+}
+
+.postcard-photo-strip {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding: 0.4rem 0;
+}
+
+.postcard-thumb {
+  width: 62px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 2px;
+  opacity: 0.45;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.postcard-thumb:hover { opacity: 0.85; }
+.postcard-thumb.active {
+  opacity: 1;
+  border-color: var(--aeris-gold);
+}
+
+.postcard-actions-bar {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.btn-postcard-main {
+  flex: 1;
+  padding: 0.95rem;
+  background: var(--aeris-gold);
+  color: var(--aeris-bg-deep);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btn-postcard-main:hover {
+  background: var(--aeris-ivory);
+  transform: translateY(-2px);
+}
+
+.btn-postcard-secondary {
+  padding: 0.95rem 1.6rem;
+  border: 1px solid var(--aeris-border);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-dim);
+  transition: all 0.3s ease;
+}
+
+.btn-postcard-secondary:hover {
+  border-color: var(--aeris-ivory);
+  color: var(--aeris-ivory);
+}
+
+/* 3D Physical Card Stage with Paper Grain */
+.postcard-stage-viewport {
+  perspective: 1600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postcard-card-frame {
+  width: 530px;
+  height: 350px;
+  cursor: pointer;
+}
+
+.postcard-3d-object {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.85);
+}
+
+.postcard-3d-object.flipped {
+  transform: rotateY(180deg);
+}
+
+.postcard-side {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Front Face */
+.postcard-side-front {
+  background: #000;
+}
+
+.postcard-side-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-front-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.8rem 1.4rem 1.8rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-front-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.card-front-coords {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--aeris-gold);
+}
+
+/* Back Face (Authentic Handmade Fine Stationery Feel) */
+.postcard-side-back {
+  background: #f7f3e6;
+  color: #1a1612;
+  transform: rotateY(180deg);
+  padding: 2.2rem;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 1.8rem;
+  border: 1px solid #d9d0ba;
+  box-shadow: inset 0 0 35px rgba(180, 165, 135, 0.2);
+}
+
+.card-back-left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #c8be9f;
+  padding-right: 1.4rem;
+}
+
+.card-back-to-text {
+  font-family: var(--font-script);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #27211b;
+}
+
+.card-back-msg-text {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: #27211b;
+  margin: 0.8rem 0;
+  flex: 1;
+  word-break: break-word;
+}
+
+.card-back-from-text {
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: right;
+  color: #27211b;
+}
+
+.card-back-right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-back-stamp-box {
+  width: 64px;
+  height: 74px;
+  border: 2px dashed #ab9e7d;
+  background: #ede4ca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+
+.card-back-lines {
+  width: 100%;
+}
+
+.card-address-line {
+  height: 1px;
+  background: #c8be9f;
+  margin-top: 1.8rem;
+}
+
+.postcard-flip-hint {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-subtle);
+  margin-top: 1.5rem;
+}
+
+/* ===================================================================
+   11 & 15 — MY EXPEDITION (LUXURY TRAVEL DOSSIER)
+   =================================================================== */
+
+.aeris-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 4, 7, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 150000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.aeris-drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.aeris-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+  background: var(--aeris-bg-surface);
+  border-left: 1px solid var(--aeris-border);
+  box-shadow: -25px 0 70px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.55s var(--ease-cinematic);
+}
+
+.aeris-drawer-backdrop.active .aeris-drawer-panel {
+  transform: translateX(0);
+}
+
+.aeris-drawer-header {
+  padding: 2.2rem;
+  border-bottom: 1px solid var(--aeris-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aeris-drawer-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.14em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.aeris-drawer-close-btn {
+  font-size: 1.25rem;
+  color: var(--aeris-ivory-dim);
+  transition: color 0.3s ease;
+}
+
+.aeris-drawer-close-btn:hover {
+  color: var(--aeris-gold);
+}
+
+.aeris-drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2.2rem;
+}
+
+.drawer-section-heading {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--aeris-gold);
+  margin-bottom: 1.4rem;
+}
+
+/* Dossier Route Tree (KYOTO 03 DAYS ↓ ZERMATT 04 DAYS) */
+.aeris-drawer-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.8rem;
+}
+
+.aeris-dossier-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aeris-border);
+  border-radius: 2px;
+}
+
+.dossier-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.dossier-info {
+  flex: 1;
+}
+
+.dossier-coords {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--aeris-ivory-subtle);
+  display: block;
+}
+
+.dossier-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  margin: 0.15rem 0;
+}
+
+.dossier-tagline {
+  font-size: 0.74rem;
+  color: var(--aeris-gold);
+}
+
+.dossier-remove-btn {
+  font-size: 0.9rem;
+  color: var(--aeris-ivory-subtle);
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.dossier-remove-btn:hover {
+  color: #ff6b6b;
+}
+
+.dossier-connector-glyph {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--aeris-gold);
+  margin: -0.4rem 0;
+  opacity: 0.7;
+}
+
+/* Calculator Box */
+.aeris-calc-box {
+  background: rgba(5, 7, 11, 0.7);
+  border: 1px solid var(--aeris-border);
+  padding: 1.6rem;
+  border-radius: 2px;
+}
+
+.calc-control-group {
+  margin-bottom: 1.4rem;
+}
+
+.calc-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--aeris-ivory-dim);
+  margin-bottom: 0.5rem;
+}
+
+.calc-control-group input[type="range"] {
+  width: 100%;
+  height: 2px;
+  accent-color: var(--aeris-gold);
+  cursor: pointer;
+}
+
+.calc-tier-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.calc-tier-radio-label {
+  padding: 0.7rem 0.4rem;
+  text-align: center;
+  border: 1px solid var(--aeris-border);
+  border-radius: 2px;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-dim);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calc-tier-radio-label input {
+  display: none;
+}
+
+.calc-tier-radio-label:has(input:checked) {
+  border-color: var(--aeris-gold);
+  color: var(--aeris-gold);
+  background: rgba(197, 160, 89, 0.12);
+}
+
+.calc-total-banner {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--aeris-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.calc-total-caption {
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-subtle);
+}
+
+.calc-total-num {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--aeris-gold);
+}
+
+.calc-per-person-text {
+  font-size: 0.74rem;
+  color: var(--aeris-ivory-dim);
+  margin-top: 0.2rem;
+}
+
+.aeris-drawer-footer {
+  padding: 1.8rem 2.2rem;
+  border-top: 1px solid var(--aeris-border);
+}
+
+.btn-export-itinerary-full {
+  width: 100%;
+  padding: 1rem;
+  background: var(--aeris-gold);
+  color: var(--aeris-bg-deep);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btn-export-itinerary-full:hover {
+  background: var(--aeris-ivory);
+  transform: translateY(-2px);
+}
+
+/* ===================================================================
+   13 — VIBE MATCHER (FULLSCREEN PHOTOGRAPHIC DECISION EXPERIENCE)
+   =================================================================== */
+
+.aeris-vibe-section {
+  position: relative;
+  padding: 8rem 4rem;
+  background: var(--aeris-bg-deep);
+  border-bottom: 1px solid var(--aeris-border);
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: var(--theme-transition);
+}
+
+.vibe-step-block {
+  max-width: 1380px;
+  margin: 0 auto;
+  width: 100%;
+  transition: opacity 0.4s ease;
+}
+
+.vibe-question-heading {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem auto;
+}
+
+.vibe-step-badge {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--aeris-gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.vibe-question-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.vibe-photo-grid-step1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+.vibe-photo-grid-step2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.8rem;
+}
+
+.vibe-photo-choice {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid var(--aeris-border);
+  transition: all 0.45s var(--ease-cinematic);
+}
+
+.vibe-photo-choice:hover {
+  transform: translateY(-8px);
+  border-color: var(--aeris-gold);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+.vibe-choice-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-cinematic);
+  filter: brightness(0.7);
+}
+
+.vibe-photo-choice:hover .vibe-choice-img {
+  transform: scale(1.08);
+  filter: brightness(0.88);
+}
+
+.vibe-choice-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 7, 11, 0.95) 0%, transparent 60%);
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.vibe-choice-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.vibe-choice-desc {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--aeris-gold);
+  text-transform: uppercase;
+}
+
+/* Result Screen */
+.vibe-result-fullscreen {
+  position: relative;
+  height: 78vh;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  border: 1px solid var(--aeris-border-gold);
+}
+
+.vibe-result-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.38) contrast(1.1);
+  z-index: 1;
+}
+
+.vibe-result-content {
+  position: relative;
+  z-index: 2;
+  max-width: 840px;
+}
+
+.vibe-res-cat {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--aeris-gold);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.vibe-res-name {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 8vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.vibe-res-country {
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  color: var(--aeris-ivory);
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  display: block;
+}
+
+.vibe-res-quote {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-style: italic;
+  color: var(--aeris-ivory-dim);
+  margin-bottom: 2.8rem;
+}
+
+.vibe-res-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+}
+
+/* Toast */
+#aeris-toast {
+  position: fixed;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: rgba(10, 14, 23, 0.95);
+  border: 1px solid var(--aeris-border-gold);
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory);
+  backdrop-filter: blur(16px);
+  z-index: 300000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease-cinematic), opacity 0.4s ease;
+}
+
+#aeris-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Responsive Suites */
+@media (max-width: 992px) {
+  .postcard-container-grid {
+    grid-template-columns: 1fr;
+  }
+  .postcard-card-frame {
+    width: 100%;
+    max-width: 440px;
+    height: 290px;
+  }
+  .vibe-photo-grid-step1,
+  .vibe-photo-grid-step2 {
+    grid-template-columns: 1fr;
+  }
+  .vibe-photo-choice {
+    height: 320px;
+  }
+}

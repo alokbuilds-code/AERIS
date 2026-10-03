@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AERIS — Go somewhere. Feel everything.</title>
+  <meta name="description" content="An interactive luxury travel journal and sensory world exhibition. High-contrast editorial photography, procedural audio atmospheres, and live world telemetry.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='85' fill='%23c5a059'>✦</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/aeris-core.css">
+  <link rel="stylesheet" href="css/aeris-editorial.css">
+  <link rel="stylesheet" href="css/aeris-interactive.css">
+</head>
+<body>
+
+  <!-- Custom Editorial Cursor (Desktop) -->
+  <div class="aeris-cursor-dot" aria-hidden="true"></div>
+  <div class="aeris-cursor-ring" aria-hidden="true"><span></span></div>
+
+  <!-- Film Grain Overlay -->
+  <div class="aeris-film-grain" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       02 — THE FIRST 5 SECONDS (CINEMATIC ENTRY SEQUENCE)
+       =================================================================== -->
+  <div id="aeris-entry-curtain" aria-label="Cinematic Opening Film">
+    <!-- Faint Atmospheric Audio Line -->
+    <div id="entry-audio-faint-line" class="entry-audio-faint-line"></div>
+
+    <!-- Emerging Destination Portal -->
+    <div id="entry-emerging-portal" class="entry-emerging-portal"></div>
+
+    <!-- Shifting Geographic Coordinates -->
+    <div id="entry-shifting-coords" class="entry-shifting-coords">
+      35.0116° N // 135.7681° E
+    </div>
+
+    <!-- Central Minimal Typography -->
+    <div id="entry-center-typography" class="entry-center-typography">
+      <h1 class="entry-brand-title">AERIS</h1>
+      <p class="entry-brand-tagline">Go somewhere. Feel everything.</p>
+    </div>
+
+    <!-- Micro-Metadata Pillars -->
+    <div id="entry-meta-pillars" class="entry-meta-pillars">
+      <div>09 DESTINATIONS • LIVE CONDITIONS • PERSONALIZED EXPEDITIONS</div>
+      <div class="entry-scroll-prompt">SCROLL TO ENTER ↓</div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       04 — MINIMAL EDITORIAL NAVIGATION
+       =================================================================== -->
+  <header id="aeris-main-nav" class="aeris-nav-header">
+    <a href="#" class="aeris-brand-mark">AERIS</a>
+
+    <nav class="aeris-nav-links" aria-label="Primary Navigation">
+      <a href="#destinations" class="aeris-nav-item">Explore</a>
+      <a href="#atlas" class="aeris-nav-item">World Atlas</a>
+      <a href="#soundscapes" class="aeris-nav-item">Atmosphere</a>
+      <a href="#vibe-matcher" class="aeris-nav-item">Vibes</a>
+      <a href="#postcard-studio" class="aeris-nav-item">Postcard</a>
+    </nav>
+
+    <div class="aeris-nav-actions">
+      <!-- Atmospheric Palette Selector -->
+      <div class="atmosphere-picker" title="Atmospheric Environment">
+        <button class="atmosphere-btn active" data-theme="atmosphere-midnight" title="Cosmic Midnight">🌌</button>
+        <button class="atmosphere-btn" data-theme="atmosphere-golden" title="Golden Hour">🌅</button>
+        <button class="atmosphere-btn" data-theme="atmosphere-emerald" title="Emerald Sanctuary">🌿</button>
+      </div>
+
+      <!-- Floating Expedition Dossier Trigger -->
+      <button id="aeris-bag-trigger" class="aeris-bag-btn" title="Open Expedition Dossier">
+        <span>Expedition</span>
+        <span id="aeris-bag-count" class="aeris-bag-count-glyph">03</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       02 & 06 — HERO SECTION (CINEMATIC DEPTH & OPENING SWITCHER)
+       =================================================================== -->
+  <section class="aeris-hero-viewport">
+    <div class="hero-background-canvas">
+      <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2000&q=85" 
+           alt="Opening Sanctuary Scene" 
+           class="hero-cinematic-photo" />
+      <div class="hero-midground-haze"></div>
+      <div class="hero-vignette-overlay"></div>
+    </div>
+
+    <!-- Editorial Central Typography -->
+    <div class="hero-editorial-center">
+      <!-- Opening Destination Switcher -->
+      <div class="hero-opening-selector">
+        <button class="hero-opening-btn active" data-hero-dest="kyoto">Kyoto</button>
+        <button class="hero-opening-btn" data-hero-dest="banff">Banff</button>
+        <button class="hero-opening-btn" data-hero-dest="petra">Petra</button>
+        <button class="hero-opening-btn" data-hero-dest="zermatt">Zermatt</button>
+        <button class="hero-opening-btn" data-hero-dest="amalfi">Amalfi</button>
+      </div>
+
+      <h2 class="hero-headline-primary">
+        Go Somewhere.
+        <span class="hero-headline-italic">Feel Everything.</span>
+      </h2>
+    </div>
+
+    <!-- Bottom Telemetry Bar -->
+    <div class="hero-bottom-telemetry-bar">
+      <div class="telemetry-col-group">
+        <div class="hero-telemetry-item">
+          <span class="hero-t-label">EXPEDITIONS</span>
+          <span class="hero-t-val">09 Curated</span>
+        </div>
+        <div class="hero-telemetry-item">
+          <span class="hero-t-label">CURRENT TELEMETRY</span>
+          <span class="hero-t-val" id="hero-live-clock">18:42 JST</span>
+        </div>
+        <div class="hero-telemetry-item">
+          <span class="hero-t-label">SEASONAL CLIMATE</span>
+          <span class="hero-t-val">21°C • Sakura Breeze</span>
+        </div>
+        <div class="hero-telemetry-item">
+          <span class="hero-t-label">DAILY BENCHMARK</span>
+          <span class="hero-t-val">From $95 / Day</span>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator">
+        <span>Scroll to Explore</span>
+        <div class="scroll-arrow-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       08 & 23 — DESTINATION DISCOVERY (MINI-FILM CHAPTER SEQUENCE)
+       =================================================================== -->
+  <main id="destinations" class="editorial-scroll-container">
+    <div id="aeris-destinations-flow">
+      <!-- Injected by aeris-main.js -->
+    </div>
+  </main>
+
+  <!-- ===================================================================
+       10 — LIVE DARK WORLD ATLAS
+       =================================================================== -->
+  <section id="atlas" class="aeris-atlas-section">
+    <div class="atlas-editorial-intro">
+      <span class="atlas-tag">PLANETARY CARTOGRAPHY</span>
+      <h3 class="atlas-headline">The World Atlas</h3>
+      <p class="atlas-subtitle">
+        Nine solitary sanctuaries across the globe. Click on any coordinate marker to guide the camera across continents and inspect live meteorological conditions and expedition telemetry.
+      </p>
+    </div>
+
+    <div id="aeris-atlas-wrapper" class="atlas-stage-container">
+      <button id="atlas-reset-btn" class="atlas-reset-view-btn">Reset Global View ⟲</button>
+
+      <!-- Vector SVG World Map with subtle graticules & continent shapes -->
+      <svg id="aeris-atlas-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Deep Ocean -->
+        <rect width="1000" height="500" class="atlas-sea-bg" />
+
+        <!-- Subdued Geographic Graticules -->
+        <g class="atlas-graticules">
+          <line x1="0" y1="125" x2="1000" y2="125" class="atlas-graticule" />
+          <line x1="0" y1="250" x2="1000" y2="250" class="atlas-graticule" stroke-dasharray="4 4" />
+          <line x1="0" y1="375" x2="1000" y2="375" class="atlas-graticule" />
+          <line x1="200" y1="0" x2="200" y2="500" class="atlas-graticule" />
+          <line x1="400" y1="0" x2="400" y2="500" class="atlas-graticule" />
+          <line x1="500" y1="0" x2="500" y2="500" class="atlas-graticule" stroke-dasharray="4 4" />
+          <line x1="600" y1="0" x2="600" y2="500" class="atlas-graticule" />
+          <line x1="800" y1="0" x2="800" y2="500" class="atlas-graticule" />
+        </g>
+
+        <!-- Continents Geometry -->
+        <g class="atlas-landmasses">
+          <!-- North America -->
+          <path class="atlas-land-mass" d="M120,60 Q180,40 260,70 Q300,100 280,180 Q250,220 200,240 Q170,230 140,180 Q100,140 120,60 Z" />
+          <!-- Central & South America -->
+          <path class="atlas-land-mass" d="M210,240 Q250,260 270,300 Q320,380 290,460 Q260,470 240,430 Q220,340 210,240 Z" />
+          <!-- Europe -->
+          <path class="atlas-land-mass" d="M460,80 Q540,70 560,130 Q540,190 480,200 Q440,160 460,80 Z" />
+          <!-- Africa -->
+          <path class="atlas-land-mass" d="M480,200 Q560,200 590,260 Q600,340 550,420 Q500,430 460,340 Q450,260 480,200 Z" />
+          <!-- Asia -->
+          <path class="atlas-land-mass" d="M560,80 Q700,60 880,100 Q920,180 840,280 Q760,280 680,220 Q580,200 560,80 Z" />
+          <!-- Australia -->
+          <path class="atlas-land-mass" d="M780,330 Q860,330 890,380 Q870,440 800,440 Q750,400 780,330 Z" />
+        </g>
+
+        <!-- Coordinate Markers -->
+        <g id="atlas-markers-group"></g>
+      </svg>
+
+      <!-- Live Floating Telemetry Dossier -->
+      <div id="atlas-telemetry-card" class="atlas-telemetry-panel">
+        <!-- Rendered by aeris-atlas.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       09 & 12 — LISTEN TO THE PLACE (SOUNDSCAPE ART LAYER)
+       =================================================================== -->
+  <section id="soundscapes" class="aeris-sound-section">
+    <div class="sound-editorial-wrapper">
+      <span class="sound-section-pre">SENSORY ATMOSPHERE</span>
+      <h3 class="sound-section-title">Listen to the Place</h3>
+      <p class="sound-section-sub">
+        Real-time organic audio environments synthesized procedurally in your browser using the Web Audio API. Zero external audio files. Tap an atmosphere below to transform the room.
+      </p>
+
+      <div class="sound-tracks-row">
+        <button class="aeris-track-btn" data-track="ocean">
+          <span>🌊</span> Ocean Waves (Amalfi)
+        </button>
+        <button class="aeris-track-btn" data-track="rain">
+          <span>🌧️</span> Rainforest Mist (Bali)
+        </button>
+        <button class="aeris-track-btn" data-track="wind">
+          <span>🏔️</span> Alpine Wind (Zermatt)
+        </button>
+        <button class="aeris-track-btn" data-track="zen">
+          <span>🔔</span> Singing Bowls (Kyoto)
+        </button>
+      </div>
+
+      <!-- Live Waveform & Tactile Volume Control -->
+      <div class="sound-live-deck">
+        <canvas id="sound-waveform-canvas" width="140" height="26"></canvas>
+        <div class="sound-vol-control">
+          <span>Volume</span>
+          <input type="range" id="sound-volume-slider" min="0" max="1" step="0.05" value="0.45" title="Atmosphere Volume" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       13 — VIBE MATCHER (FULLSCREEN PHOTOGRAPHIC DECISION EXPERIENCE)
+       =================================================================== -->
+  <section id="vibe-matcher" class="aeris-vibe-section">
+    <!-- Step 1: Mood Choice -->
+    <div id="vibe-step-1" class="vibe-step-block">
+      <div class="vibe-question-heading">
+        <span class="vibe-step-badge">DECISION 01 OF 02</span>
+        <h3 class="vibe-question-title">What are you chasing?</h3>
+      </div>
+
+      <div class="vibe-photo-grid-step1">
+        <div class="vibe-photo-choice" data-mood="serene">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1000&q=80" alt="Serene Kyoto" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Serene & Zen</h4>
+            <span class="vibe-choice-desc">Quiet cedar temples & moss sanctuaries</span>
+          </div>
+        </div>
+
+        <div class="vibe-photo-choice" data-mood="adventure">
+          <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1000&q=80" alt="Wild Adventure Banff" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Wild Adventure</h4>
+            <span class="vibe-choice-desc">Raw limestone peaks & glacial rapids</span>
+          </div>
+        </div>
+
+        <div class="vibe-photo-choice" data-mood="ancient">
+          <img src="https://images.unsplash.com/photo-1544971587-b842c27f8e14?auto=format&fit=crop&w=1000&q=80" alt="Ancient Mystery Petra" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Ancient Mystery</h4>
+            <span class="vibe-choice-desc">Rose-red canyon monuments & antiquity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Climate Choice (Hidden until Step 1 selected) -->
+    <div id="vibe-step-2" class="vibe-step-block" style="display: none; opacity: 0;">
+      <div class="vibe-question-heading">
+        <span class="vibe-step-badge">DECISION 02 OF 02</span>
+        <h3 class="vibe-question-title">What climate calls you?</h3>
+      </div>
+
+      <div class="vibe-photo-grid-step2">
+        <div class="vibe-photo-choice" data-climate="warm">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=80" alt="Warm Mediterranean" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Warm</h4>
+            <span class="vibe-choice-desc">Mediterranean terracotta sun</span>
+          </div>
+        </div>
+
+        <div class="vibe-photo-choice" data-climate="cold">
+          <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=900&q=80" alt="Alpine Frost Zermatt" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Cold</h4>
+            <span class="vibe-choice-desc">Pristine powder snow & sharp air</span>
+          </div>
+        </div>
+
+        <div class="vibe-photo-choice" data-climate="tropical">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80" alt="Tropical Bali" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Tropical</h4>
+            <span class="vibe-choice-desc">Lush emerald palms & warm lagoons</span>
+          </div>
+        </div>
+
+        <div class="vibe-photo-choice" data-climate="mild">
+          <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=900&q=80" alt="Mild Spring Kyoto" class="vibe-choice-img" />
+          <div class="vibe-choice-overlay">
+            <h4 class="vibe-choice-title">Mild</h4>
+            <span class="vibe-choice-desc">Gentle temperate spring whispers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Result Reveal (Hidden until completed) -->
+    <div id="vibe-step-result" class="vibe-step-block" style="display: none; opacity: 0;">
+      <div class="vibe-result-fullscreen">
+        <img id="vibe-result-bg" src="" alt="Result Destination" class="vibe-result-bg-img" />
+        <div class="vibe-result-content">
+          <span id="vibe-result-category" class="vibe-res-cat">YOUR VIBE</span>
+          <h2 id="vibe-result-title" class="vibe-res-name">KYOTO</h2>
+          <span id="vibe-result-country" class="vibe-res-country">JAPAN</span>
+          <p id="vibe-result-quote" class="vibe-res-quote">“The whisper of thousand-year moss.”</p>
+          <div class="vibe-res-actions">
+            <button id="vibe-result-explore-btn" class="btn-postcard-main">Journey Into Sanctuary</button>
+            <button id="vibe-reset-trigger" class="btn-postcard-secondary">Retake Matcher ⟲</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       10 & 14 — POSTCARD STUDIO (TACTILE PHYSICAL ARTIFACT)
+       =================================================================== -->
+  <section id="postcard-studio" class="aeris-postcard-section">
+    <div class="postcard-editorial-header">
+      <span class="sound-section-pre">MEMORIA & CORRESPONDENCE</span>
+      <h3 class="sound-section-title">The Postcard Studio</h3>
+      <p class="sound-section-sub">
+        Send a tactile digital memory across the world. Select a destination frame, affix an authentic postal stamp, compose your handwritten correspondence, and inspect the physical card in 3D.
+      </p>
+    </div>
+
+    <div class="postcard-container-grid">
+      <!-- Editor Controls Column -->
+      <div class="postcard-controls-panel">
+        <div class="studio-input-block">
+          <label>Select Sanctuary:</label>
+          <select id="postcard-select-dest"></select>
+        </div>
+
+        <div class="studio-input-block">
+          <label>Choose Photographic Plate:</label>
+          <div id="postcard-photo-strip" class="postcard-photo-strip"></div>
+        </div>
+
+        <div class="studio-input-block">
+          <label>Affix Postal Stamp:</label>
+          <div class="stamps-choice-row">
+            <button class="stamp-option-btn active" data-stamp="🌸" title="Sakura Blossom">🌸</button>
+            <button class="stamp-option-btn" data-stamp="🏔️" title="Matterhorn Peak">🏔️</button>
+            <button class="stamp-option-btn" data-stamp="🏛️" title="Petra Column">🏛️</button>
+            <button class="stamp-option-btn" data-stamp="🌌" title="Arctic Aurora">🌌</button>
+          </div>
+        </div>
+
+        <div class="studio-input-block">
+          <label>Recipient:</label>
+          <input type="text" id="postcard-input-to" placeholder="e.g. Dear Elena," />
+        </div>
+
+        <div class="studio-input-block">
+          <label>Your Correspondence:</label>
+          <textarea id="postcard-input-msg" rows="3" placeholder="Describe the mountain twilight, the smell of rain on stone..."></textarea>
+        </div>
+
+        <div class="studio-input-block">
+          <label>Signature:</label>
+          <input type="text" id="postcard-input-from" placeholder="e.g. Sahil" />
+        </div>
+
+        <div class="postcard-actions-bar">
+          <button id="postcard-flip-action" class="btn-postcard-main">🔄 Flip Physical Card (3D)</button>
+          <button id="postcard-print-action" class="btn-postcard-secondary">🖨️ Print / Save</button>
+        </div>
+      </div>
+
+      <!-- 3D Tactile Postcard Stage -->
+      <div class="postcard-stage-viewport">
+        <div class="postcard-card-frame" title="Click directly on the card to flip in 3D">
+          <div id="postcard-3d-object" class="postcard-3d-object">
+            <!-- Front Face: Full-Bleed Photograph -->
+            <div class="postcard-side postcard-side-front">
+              <img id="card-front-photo" src="" alt="Postcard Front" />
+              <div class="card-front-caption-overlay">
+                <h4 id="card-front-title" class="card-front-title">KYOTO</h4>
+                <span id="card-front-coords" class="card-front-coords">35.0116° N, 135.7681° E • JAPAN</span>
+              </div>
+            </div>
+
+            <!-- Back Face: Realistic Handmade Stationery -->
+            <div class="postcard-side postcard-side-back">
+              <div class="card-back-left-column">
+                <div id="card-back-to-text" class="card-back-to-text">Dear Explorer,</div>
+                <div id="card-back-msg-text" class="card-back-msg-text">
+                  The light here falls upon ancient stone in ways that defy memory. Wish you were standing beside me.
+                </div>
+                <div id="card-back-from-text" class="card-back-from-text">— A Wanderer</div>
+              </div>
+
+              <div class="card-back-right-column">
+                <div class="card-back-stamp-box">
+                  <span id="card-back-stamp-glyph">🌸</span>
+                </div>
+                <div class="card-back-lines">
+                  <div class="card-address-line"></div>
+                  <div class="card-address-line"></div>
+                  <div class="card-address-line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="postcard-flip-hint">✧ Click directly on postcard to flip between photograph and stationery</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       11 & 15 — MY EXPEDITION (LUXURY TRAVEL DOSSIER & CALCULATOR)
+       =================================================================== -->
+  <div id="aeris-drawer-overlay" class="aeris-drawer-backdrop" aria-hidden="true">
+    <div class="aeris-drawer-panel" role="dialog" aria-label="My Expedition Dossier">
+      <div class="aeris-drawer-header">
+        <h4 class="aeris-drawer-title">My Expedition</h4>
+        <button id="aeris-drawer-close" class="aeris-drawer-close-btn" title="Close Dossier">✕</button>
+      </div>
+
+      <div class="aeris-drawer-content">
+        <div class="drawer-section-heading">Curated Itinerary Route</div>
+        <div id="aeris-drawer-items-list" class="aeris-drawer-items-list">
+          <!-- Rendered by aeris-expedition.js as a route tree -->
+        </div>
+
+        <div class="drawer-section-heading">Dynamic Investment Estimator</div>
+        <div class="aeris-calc-box">
+          <div class="calc-control-group">
+            <div class="calc-label-row">
+              <span>Explorers:</span>
+              <strong id="aeris-travelers-display">2 Explorers</strong>
+            </div>
+            <input type="range" id="aeris-calc-travelers" min="1" max="8" value="2" />
+          </div>
+
+          <div class="calc-control-group">
+            <div class="calc-label-row">
+              <span>Duration:</span>
+              <strong id="aeris-days-display">7 Days</strong>
+            </div>
+            <input type="range" id="aeris-calc-days" min="2" max="30" value="7" />
+          </div>
+
+          <div class="calc-control-group">
+            <div class="calc-label-row">
+              <span>Hospitality Tier:</span>
+            </div>
+            <div class="calc-tier-options">
+              <label class="calc-tier-radio-label">
+                <input type="radio" name="aeris-calc-tier" value="0.65" />
+                Backpacker
+              </label>
+              <label class="calc-tier-radio-label">
+                <input type="radio" name="aeris-calc-tier" value="1.0" checked />
+                Comfort
+              </label>
+              <label class="calc-tier-radio-label">
+                <input type="radio" name="aeris-calc-tier" value="2.35" />
+                Ultra-Luxe
+              </label>
+            </div>
+          </div>
+
+          <div class="calc-total-banner">
+            <div>
+              <span class="calc-total-caption">Projected Investment</span>
+              <div id="aeris-calc-breakdown" class="calc-per-person-text">~$2,140 per explorer</div>
+            </div>
+            <div id="aeris-calc-total" class="calc-total-num">$4,280</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="aeris-drawer-footer">
+        <button id="aeris-export-itinerary-btn" class="btn-export-itinerary-full">
+          📋 Export Itinerary Dossier
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       08 — FULLSCREEN EDITORIAL LIGHTBOX
+       =================================================================== -->
+  <div id="aeris-lightbox" class="aeris-lightbox-container" role="dialog" aria-label="Fullscreen Photographic Portfolio">
+    <div class="lightbox-cinema-topbar">
+      <div class="lightbox-meta-cluster">
+        <span id="lightbox-cinema-counter" class="lightbox-cinema-counter">01 / 05</span>
+        <h4 id="lightbox-cinema-title" class="lightbox-cinema-title">KYOTO, JAPAN</h4>
+      </div>
+      <button id="lightbox-cinema-close" class="lightbox-dismiss-btn">Close [Esc]</button>
+    </div>
+
+    <div class="lightbox-cinema-stage">
+      <button id="lightbox-cinema-prev" class="lightbox-arrow-nav lightbox-prev-nav" title="Previous Image [←]">‹</button>
+      <img id="lightbox-cinema-img" src="" alt="High-Resolution Portfolio Image" class="lightbox-cinema-img" />
+      <button id="lightbox-cinema-next" class="lightbox-arrow-nav lightbox-next-nav" title="Next Image [→]">›</button>
+    </div>
+
+    <div class="lightbox-cinema-bottombar">
+      <span>Use Arrow Keys [← / →] to navigate</span>
+      <span>Unsplash Ultra-Res Photographic Archives</span>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       17 — MINIMAL EDITORIAL FOOTER
+       =================================================================== -->
+  <footer class="aeris-minimal-footer">
+    <div class="footer-inner-wrapper">
+      <div>
+        <h3 class="footer-brand-title">AERIS</h3>
+        <p class="footer-tagline-text">Go somewhere. Feel everything.</p>
+      </div>
+
+      <nav class="footer-minimal-nav">
+        <a href="#destinations" class="footer-nav-link">Explore</a>
+        <a href="javascript:void(0)" onclick="aerisExpedition.openDrawer()" class="footer-nav-link">Expedition</a>
+        <a href="#vibe-matcher" class="footer-nav-link">Vibes</a>
+        <a href="#soundscapes" class="footer-nav-link">Sound</a>
+      </nav>
+
+      <div class="footer-bottom-credits">
+        © 2026 AERIS. Digital Art & Curated Global Expedition Journal.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="aeris-toast"></div>
+
+  <!-- Modular Scripts Loaded In Proper Order -->
+  <script src="js/aeris-data.js"></script>
+  <script src="js/aeris-audio.js"></script>
+  <script src="js/aeris-atlas.js"></script>
+  <script src="js/aeris-lightbox.js"></script>
+  <script src="js/aeris-expedition.js"></script>
+  <script src="js/aeris-postcard.js"></script>
+  <script src="js/aeris-vibe.js"></script>
+  <script src="js/aeris-main.js"></script>
+</body>
+</html>

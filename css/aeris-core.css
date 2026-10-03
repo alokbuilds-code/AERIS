@@ -1,0 +1,440 @@
+/* ===================================================================
+   AERIS — ELITE LUXURY TRAVEL JOURNAL DESIGN SYSTEM & THEMES
+   Aesop Restraint + Monocle Sophistication + National Geographic
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Caveat:wght@600&display=swap');
+
+:root {
+  /* THEME 01: COSMIC MIDNIGHT (Default Editorial Obsidian) */
+  --aeris-bg-deep: #05070b;
+  --aeris-bg-surface: #0a0e17;
+  --aeris-bg-overlay: rgba(5, 7, 11, 0.92);
+  --aeris-border: rgba(247, 244, 236, 0.07);
+  --aeris-border-gold: rgba(197, 160, 89, 0.3);
+
+  --aeris-ivory: #f7f4ec;
+  --aeris-ivory-dim: #ada89b;
+  --aeris-ivory-subtle: #615e55;
+
+  --aeris-gold: #c5a059;
+  --aeris-gold-glow: rgba(197, 160, 89, 0.18);
+  --aeris-navy: #09111f;
+
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --theme-transition: background-color 1s var(--ease-cinematic), color 1s var(--ease-cinematic), border-color 1s var(--ease-cinematic);
+}
+
+/* THEME 02: GOLDEN HOUR (Warm Sepia & Terracotta) */
+body.atmosphere-golden {
+  --aeris-bg-deep: #0c0906;
+  --aeris-bg-surface: #161009;
+  --aeris-bg-overlay: rgba(12, 9, 6, 0.92);
+  --aeris-border: rgba(212, 175, 55, 0.1);
+  --aeris-border-gold: rgba(212, 175, 55, 0.38);
+
+  --aeris-ivory: #fffbf2;
+  --aeris-ivory-dim: #c7b297;
+  --aeris-gold: #d4af37;
+  --aeris-gold-glow: rgba(212, 175, 55, 0.22);
+}
+
+/* THEME 03: EMERALD SANCTUARY (Deep Pine & Dew Mist) */
+body.atmosphere-emerald {
+  --aeris-bg-deep: #040d0a;
+  --aeris-bg-surface: #0a1914;
+  --aeris-bg-overlay: rgba(4, 13, 10, 0.92);
+  --aeris-border: rgba(64, 165, 132, 0.1);
+  --aeris-border-gold: rgba(64, 165, 132, 0.38);
+
+  --aeris-ivory: #effcf6;
+  --aeris-ivory-dim: #9bc5b4;
+  --aeris-gold: #38b28b;
+  --aeris-gold-glow: rgba(56, 178, 139, 0.22);
+}
+
+/* ===================================================================
+   RESET & EDITORIAL ARCHITECTURE
+   =================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--aeris-bg-deep);
+  color: var(--aeris-ivory);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--aeris-bg-deep);
+  color: var(--aeris-ivory);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: var(--theme-transition);
+}
+
+/* Custom Editorial Cursor (Desktop Only) */
+.aeris-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--aeris-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.aeris-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--aeris-border-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.35s var(--ease-cinematic), height 0.35s var(--ease-cinematic), background 0.35s ease, border-color 0.35s ease;
+}
+
+.aeris-cursor-ring span {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  color: var(--aeris-bg-deep);
+  opacity: 0;
+  text-transform: uppercase;
+  transition: opacity 0.25s ease;
+}
+
+.aeris-cursor-ring.hover-interactive {
+  width: 48px;
+  height: 48px;
+  border-color: var(--aeris-gold);
+  background: rgba(197, 160, 89, 0.08);
+}
+
+.aeris-cursor-ring.hover-view {
+  width: 68px;
+  height: 68px;
+  background: var(--aeris-gold);
+  border-color: var(--aeris-gold);
+}
+
+.aeris-cursor-ring.hover-view span {
+  opacity: 1;
+}
+
+@media (hover: none) or (pointer: coarse) {
+  .aeris-cursor-dot, .aeris-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* Subtle Film Grain Layer */
+.aeris-film-grain {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  user-select: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  outline: none;
+}
+
+/* ===================================================================
+   02 — THE FIRST 5 SECONDS (CINEMATIC ENTRY EXPERIENCE)
+   =================================================================== */
+
+#aeris-entry-curtain {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 1.4s var(--ease-expo), visibility 1.4s ease;
+}
+
+#aeris-entry-curtain.revealed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Faint sound visualizer ripple line */
+.entry-audio-faint-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0px;
+  height: 1px;
+  background: rgba(197, 160, 89, 0.7);
+  box-shadow: 0 0 35px rgba(197, 160, 89, 0.6);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* Expanding cinematic window */
+.entry-emerging-portal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0%;
+  height: 2px;
+  background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2000&q=85');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1), height 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
+  z-index: 2;
+}
+
+.entry-center-typography {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1.3s ease, transform 1.3s var(--ease-cinematic);
+}
+
+.entry-brand-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.6rem, 9vw, 6.8rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--aeris-ivory);
+  line-height: 1;
+}
+
+.entry-brand-tagline {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  color: var(--aeris-gold);
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.entry-shifting-coords {
+  position: absolute;
+  top: calc(50% - 100px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--aeris-gold);
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s var(--ease-cinematic);
+  z-index: 4;
+}
+
+.entry-meta-pillars {
+  position: absolute;
+  bottom: 3.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  color: var(--aeris-ivory-dim);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  z-index: 4;
+}
+
+.entry-scroll-prompt {
+  margin-top: 0.6rem;
+  color: var(--aeris-gold);
+  font-weight: 600;
+}
+
+/* Accessibility Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  #aeris-entry-curtain {
+    transition: opacity 0.3s ease !important;
+  }
+  .entry-center-typography, .entry-emerging-portal, .entry-audio-faint-line {
+    transition: none !important;
+  }
+}
+
+/* ===================================================================
+   04 — EDITORIAL NAVIGATION (RESTRAINED & EXPENSIVE)
+   =================================================================== */
+
+.aeris-nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: padding 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+  opacity: 0; /* Hidden during opening, revealed gracefully */
+}
+
+.aeris-nav-header.active-visible {
+  opacity: 1;
+}
+
+.aeris-nav-header.scrolled {
+  padding: 1.1rem 4rem;
+  background: var(--aeris-bg-overlay);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--aeris-border);
+}
+
+.aeris-brand-mark {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  letter-spacing: 0.22em;
+  font-weight: 400;
+  color: var(--aeris-ivory);
+}
+
+.aeris-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.aeris-nav-item {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory-dim);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.aeris-nav-item:hover {
+  color: var(--aeris-gold);
+}
+
+.aeris-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+/* Atmospheric Palette Control */
+.atmosphere-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--aeris-border);
+  border-radius: 999px;
+}
+
+.atmosphere-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.45;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.atmosphere-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.15);
+}
+
+.atmosphere-btn.active {
+  opacity: 1;
+  background: var(--aeris-border-gold);
+}
+
+/* Floating Expedition Dossier Trigger */
+.aeris-bag-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 1.15rem;
+  border: 1px solid var(--aeris-border-gold);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--aeris-ivory);
+  background: rgba(197, 160, 89, 0.03);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.aeris-bag-btn:hover {
+  background: rgba(197, 160, 89, 0.12);
+  transform: translateY(-1px);
+}
+
+.aeris-bag-count-glyph {
+  color: var(--aeris-gold);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .aeris-nav-header {
+    padding: 1.2rem 1.8rem;
+  }
+  .aeris-nav-links {
+    display: none;
+  }
+}
