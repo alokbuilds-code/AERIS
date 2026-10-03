@@ -1,11 +1,11 @@
-# ✦ AERIS — Elite Digital Travel Experience
+# AERIS — Elite Digital Travel Experience
 
 > **CREATIVE BENCHMARK**:  
 > Aesop-level restraint + Monocle editorial sophistication + National Geographic photography + High-end luxury hospitality + Interactive digital art.
 > 
 > **TAGLINE**: *GO SOMEWHERE. FEEL EVERYTHING.*
 
----
+
 
 ## 🏛️ Architectural Overview
 
@@ -107,6 +107,3 @@ New folder (21)/
 
 ---
 
-## 🚀 How to Experience AERIS
-
-Double-click [index.html](file:///c:/Users/SAHIL%20CHOUDHARY/Downloads/New%20folder%20%2821%29/index.html) to open directly in any modern web browser (Chrome, Edge, Firefox, Brave, Safari).
